@@ -12,6 +12,31 @@ You run your own private copy with your own free accounts. Your photos and detai
 > [`CLAUDE.md`](CLAUDE.md). It's a personal project shared as-is. Feedback and suggestions are
 > very welcome.
 
+## Screenshots
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/screenshots/homes.png" width="230" alt="Homes list"><br><sub>Your homes</sub></td>
+    <td align="center"><img src="docs/screenshots/room.png" width="230" alt="A room with its items"><br><sub>A room and its items</sub></td>
+    <td align="center"><img src="docs/screenshots/item.png" width="230" alt="An item with photo and receipt"><br><sub>An item with its receipt</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/screenshots/ai-suggestions.png" width="230" alt="AI suggestions for one item"><br><sub>✨ AI suggestions: tick what's right</sub></td>
+    <td align="center"><img src="docs/screenshots/room-review.png" width="230" alt="Reviewing AI suggestions for a whole room"><br><sub>✨ A whole room at once, reviewed item by item</sub></td>
+    <td align="center"><img src="docs/screenshots/dashboard.png" width="230" alt="Dashboard with totals"><br><sub>Dashboard</sub></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="3">
+      <img src="docs/screenshots/report-cover.png" width="330" alt="Insurance report cover page">
+      <img src="docs/screenshots/report-item.png" width="330" alt="Insurance report item page"><br>
+      <sub>The insurance report (PDF): cover page and an item page</sub>
+    </td>
+  </tr>
+</table>
+
+<sub>Demo home with made-up data. The "photos" are illustrations, and the AI suggestions shown are
+examples of what it returns.</sub>
+
 ## What it does
 
 - **Room-by-room capture.** Homes → rooms → items. The in-app camera snaps photos fast; each

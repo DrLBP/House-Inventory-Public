@@ -3,12 +3,13 @@
 -- Paste this whole file into Supabase -> SQL Editor -> New query -> Run.
 -- It is safe to run more than once.
 --
--- (It is simply the numbered scripts 001-008 in this folder, one after
--- another. Existing installs only need the numbered scripts they haven't run.)
+-- Later updates to the database come as separate numbered files in this
+-- folder (starting at 009_...sql). Anyone who set up earlier runs only
+-- those; a new setup just runs this file.
 -- =====================================================================
 
 
--- ##################### 001_homes_and_rooms.sql #####################
+-- ##################### Part 1: homes and rooms #####################
 -- =====================================================================
 -- Step 3: Homes and Rooms
 -- Paste this whole file into Supabase -> SQL Editor -> New query -> Run.
@@ -94,7 +95,7 @@ create policy "Owner can manage rooms" on public.rooms
   );
 
 
--- ##################### 002_google_connection.sql #####################
+-- ##################### Part 2: google connection #####################
 -- =====================================================================
 -- Step 4: Google Drive connection
 -- Paste this whole file into Supabase -> SQL Editor -> New query -> Run.
@@ -124,7 +125,7 @@ create trigger google_connection_set_updated_at before update on public.google_c
   for each row execute function public.set_updated_at();
 
 
--- ##################### 003_items_and_photos.sql #####################
+-- ##################### Part 3: items and photos #####################
 -- =====================================================================
 -- Step 5: Items, photos, and the private thumbnail storage
 -- Paste this whole file into Supabase -> SQL Editor -> New query -> Run.
@@ -246,7 +247,7 @@ create policy "Owner can delete own thumbnails" on storage.objects
   using (bucket_id = 'thumbnails' and (storage.foldername(name))[1] = (select auth.uid())::text);
 
 
--- ##################### 004_home_photo.sql #####################
+-- ##################### Part 4: home photo #####################
 -- =====================================================================
 -- Home photo (an outside picture of each home)
 -- Paste this whole file into Supabase -> SQL Editor -> New query -> Run.
@@ -262,7 +263,7 @@ alter table public.homes add column if not exists photo_thumb_path text;
 alter table public.homes add column if not exists photo_taken_at timestamptz;
 
 
--- ##################### 005_item_quantity.sql #####################
+-- ##################### Part 5: item quantity #####################
 -- =====================================================================
 -- Item quantity (e.g. 4 matching stools)
 -- Paste this whole file into Supabase -> SQL Editor -> New query -> Run.
@@ -277,7 +278,7 @@ alter table public.items drop constraint if exists items_quantity_check;
 alter table public.items add constraint items_quantity_check check (quantity >= 1 and quantity <= 10000);
 
 
--- ##################### 006_product_link.sql #####################
+-- ##################### Part 6: product link #####################
 -- =====================================================================
 -- Product link for each item (e.g. the shop's page for that item)
 -- Paste this whole file into Supabase -> SQL Editor -> New query -> Run.
@@ -296,7 +297,7 @@ where product_url is null
   and notes ~ 'https?://';
 
 
--- ##################### 007_pdf_receipts.sql #####################
+-- ##################### Part 7: pdf receipts #####################
 -- =====================================================================
 -- PDF receipts: remember each file's type (photo or PDF)
 -- Paste this whole file into Supabase -> SQL Editor -> New query -> Run.
@@ -309,7 +310,7 @@ alter table public.photos add constraint photos_mime_type_check
   check (mime_type in ('image/jpeg', 'application/pdf'));
 
 
--- ##################### 008_cover_photo_and_room_review.sql #####################
+-- ##################### Part 8: cover photo and room review #####################
 -- =====================================================================
 -- Main photo per item, and "Last reviewed" per room
 -- Paste this whole file into Supabase -> SQL Editor -> New query -> Run.

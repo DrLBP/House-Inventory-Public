@@ -1,0 +1,17 @@
+# Installed libraries (re-created with "npm install")
+node_modules/
+# Build output (re-created with "npm run build")
+dist/
+dev-dist/
+# Secret settings: NEVER commit these
+.env
+.env.local
+.env.*.local
+# Vercel's local settings
+.vercel/
+# Computer clutter
+.DS_Store
+*.log
+
+# Import files contain personal data: never commit them
+*-import.json
